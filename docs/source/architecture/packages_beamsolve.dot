@@ -19,5 +19,5 @@ charset="utf-8"
 "beamsolve.FEM" -> "beamsolve.FEM.solver" [arrowhead="open", arrowtail="none"];
 "beamsolve.FEM.fem_model" -> "beamsolve.FEM.solver" [arrowhead="open", arrowtail="none"];
 "beamsolve.FEM.visualisation" -> "beamsolve.FEM.solver" [arrowhead="open", arrowtail="none"];
-"beamsolve.beam" -> "beamsolve.beam.beam" [arrowhead="open", arrowtail="none"];
+"beamsolve.beam" -> "beamsolve.beam" [arrowhead="open", arrowtail="none"];
 }
