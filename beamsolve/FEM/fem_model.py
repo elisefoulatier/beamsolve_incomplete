@@ -210,3 +210,54 @@ class FEMModel:
             Phi         = Phi,
             x_nodes     = x_nodes,
         )
+
+
+    def element_stiffness(self) :
+        r"""
+        Compute elementary stiffness matrix.
+
+        Parameters
+        ----------
+        self :
+            Description of the problem
+
+        Returns
+        -------
+        Ke : ndarray
+            The elementary stiffness matrix.
+        """
+        E = self.beam.E
+        I = self.beam.I
+        Le = self.Le
+
+        # Build elementary 4 x 4 matrix
+        Ke = E*I/Le^3*[[12, 6*Le, -12, 6*Le], [6*Le, 4*Le^2, -6*Le, 2*Le^2], [-12, -6*Le, 12, -6*Le], [6*Le, 2*Le^2, -6*Le, 4*Le^2]]
+        Ke = np.ndarray(Ke)
+
+
+        return Ke
+    
+    def element_mass(self) :
+        r"""
+        Compute elementary mass matrix.
+
+        Parameters
+        ----------
+        self :
+            Description of the problem
+
+        Returns
+        -------
+        Me : ndarray
+            The elementary mass matrix.
+        """
+        A = self.beam.A
+        rho = self.beam.rho
+        Le = self.Le
+
+        # Build elementary 4 x 4 matrix
+        Me = rho*A*Le/420*[[156, 22*Le, 54, -13*Le], [22*Le, 4*Le^2, 13*Le, -3*Le^2], [54, 13*Le, 156, -22*Le], [-13*Le, -3*Le^2, -22*Le, 4*Le^2]]
+        Me = np.ndarray(Me)
+
+
+        return Me
