@@ -1,0 +1,726 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modules &mdash; beamsolve 0.1.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=01f34227"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+      <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation guide" href="install.html" />
+    <link rel="prev" title="Package architecture" href="architecture.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            beamsolve
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="readme.html">README</a></li>
+<li class="toctree-l1"><a class="reference internal" href="beam_theory.html">Euler-Bernoulli beam theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="architecture.html">Package architecture</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#beam-module">beam Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-beamsolve.beam.beam">beam</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#beamsolve.beam.beam.Beam"><code class="docutils literal notranslate"><span class="pre">Beam</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beamsolve.beam.beam.circular_section"><code class="docutils literal notranslate"><span class="pre">circular_section()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#beamsolve.beam.beam.rectangular_section"><code class="docutils literal notranslate"><span class="pre">rectangular_section()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#fem-module">FEM Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-beamsolve.FEM.fem_model">fem_model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel"><code class="docutils literal notranslate"><span class="pre">FEMModel</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.assemble_global_matrix"><code class="docutils literal notranslate"><span class="pre">FEMModel.assemble_global_matrix()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.get_constrained_dofs"><code class="docutils literal notranslate"><span class="pre">FEMModel.get_constrained_dofs()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.get_free_dofs"><code class="docutils literal notranslate"><span class="pre">FEMModel.get_free_dofs()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.reduced_matrices"><code class="docutils literal notranslate"><span class="pre">FEMModel.reduced_matrices()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.solve_modes"><code class="docutils literal notranslate"><span class="pre">FEMModel.solve_modes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-beamsolve.FEM.solver">solver</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#beamsolve.FEM.solver.FEMSolution"><code class="docutils literal notranslate"><span class="pre">FEMSolution</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#module-beamsolve.FEM.visualisation">visualisation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#beamsolve.FEM.visualisation.plot_mode_shapes"><code class="docutils literal notranslate"><span class="pre">plot_mode_shapes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#analytical-module">Analytical Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-beamsolve.Analytical.analytical_model">analytical_model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalModel"><code class="docutils literal notranslate"><span class="pre">AnalyticalModel</span></code></a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.bc_rows"><code class="docutils literal notranslate"><span class="pre">AnalyticalModel.bc_rows()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.build_Z"><code class="docutils literal notranslate"><span class="pre">AnalyticalModel.build_Z()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.characteristic_equation"><code class="docutils literal notranslate"><span class="pre">AnalyticalModel.characteristic_equation()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.find_betas"><code class="docutils literal notranslate"><span class="pre">AnalyticalModel.find_betas()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.mode_coefficients"><code class="docutils literal notranslate"><span class="pre">AnalyticalModel.mode_coefficients()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.normalise"><code class="docutils literal notranslate"><span class="pre">AnalyticalModel.normalise()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.phi"><code class="docutils literal notranslate"><span class="pre">AnalyticalModel.phi()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.solve_modes"><code class="docutils literal notranslate"><span class="pre">AnalyticalModel.solve_modes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalSolution"><code class="docutils literal notranslate"><span class="pre">AnalyticalSolution</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">visualisation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#beamsolve.Analytical.visualisation.plot_mode_shapes"><code class="docutils literal notranslate"><span class="pre">plot_mode_shapes()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Installation guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Application examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="citation.html">Citation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="license.html">License</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">beamsolve</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Modules</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/modules.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Link to this heading"></a></h1>
+<section id="beam-module">
+<h2>beam Module<a class="headerlink" href="#beam-module" title="Link to this heading"></a></h2>
+<section id="module-beamsolve.beam.beam">
+<span id="beam"></span><h3>beam<a class="headerlink" href="#module-beamsolve.beam.beam" title="Link to this heading"></a></h3>
+<p>Beam definition and cross-section helper functions.</p>
+<p>&#64;author: Vincent Mahé</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="beamsolve.beam.beam.Beam">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">beamsolve.beam.beam.</span></span><span class="sig-name descname"><span class="pre">Beam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">L</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rho</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">A</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">I</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bc_left</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'clamped'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bc_right</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'free'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/beam/beam.html#Beam"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.beam.beam.Beam" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>An Euler-Bernoulli beam.</p>
+<p>The beam is characterised by its geometry, material properties, and
+boundary conditions at both ends.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>L</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Beam length [m].</p></li>
+<li><p><strong>E</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Young’s modulus [Pa].</p></li>
+<li><p><strong>rho</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Material density [kg/m³].</p></li>
+<li><p><strong>A</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Cross-sectional area [m²].</p></li>
+<li><p><strong>I</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Second moment of area [m⁴].</p></li>
+<li><p><strong>bc_left</strong> (<em>{&quot;clamped&quot;</em><em>, </em><em>&quot;free&quot;</em><em>, </em><em>&quot;pinned&quot;}</em>) – Boundary condition at the left end (<span class="math notranslate nohighlight">\(x = 0\)</span>).</p></li>
+<li><p><strong>bc_right</strong> (<em>{&quot;clamped&quot;</em><em>, </em><em>&quot;free&quot;</em><em>, </em><em>&quot;pinned&quot;}</em>) – Boundary condition at the right end (<span class="math notranslate nohighlight">\(x = L\)</span>).</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<p>Clamped-free beam with a rectangular cross-section:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">Beam</span><span class="p">,</span> <span class="n">rectangular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">rectangular_section</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span> <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">210e9</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">7800</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">bc_left</span><span class="o">=</span><span class="s2">&quot;clamped&quot;</span><span class="p">,</span> <span class="n">bc_right</span><span class="o">=</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Simply supported beam with a circular cross-section:</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">Beam</span><span class="p">,</span> <span class="n">circular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">circular_section</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span> <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">70e9</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">2700</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">bc_left</span><span class="o">=</span><span class="s2">&quot;pinned&quot;</span><span class="p">,</span> <span class="n">bc_right</span><span class="o">=</span><span class="s2">&quot;pinned&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beamsolve.beam.beam.circular_section">
+<span class="sig-prename descclassname"><span class="pre">beamsolve.beam.beam.</span></span><span class="sig-name descname"><span class="pre">circular_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">d</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/beam/beam.html#circular_section"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.beam.beam.circular_section" title="Link to this definition"></a></dt>
+<dd><p>Compute the cross-sectional area and second moment of area of a
+circular section.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>d</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Section diameter [m].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>A</strong> (<em>float</em>) – Cross-sectional area [m²].</p></li>
+<li><p><strong>I</strong> (<em>float</em>) – Second moment of area [m⁴].</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">circular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">circular_section</span><span class="p">(</span><span class="n">d</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="beamsolve.beam.beam.rectangular_section">
+<span class="sig-prename descclassname"><span class="pre">beamsolve.beam.beam.</span></span><span class="sig-name descname"><span class="pre">rectangular_section</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">b</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">h</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/beam/beam.html#rectangular_section"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.beam.beam.rectangular_section" title="Link to this definition"></a></dt>
+<dd><p>Compute the cross-sectional area and second moment of area of a
+rectangular section.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>b</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Section width [m].</p></li>
+<li><p><strong>h</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Section height [m].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>A</strong> (<em>float</em>) – Cross-sectional area [m²].</p></li>
+<li><p><strong>I</strong> (<em>float</em>) – Second moment of area about the neutral axis [m⁴].</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">rectangular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">rectangular_section</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="fem-module">
+<h2>FEM Module<a class="headerlink" href="#fem-module" title="Link to this heading"></a></h2>
+<section id="module-beamsolve.FEM.fem_model">
+<span id="fem-model"></span><h3>fem_model<a class="headerlink" href="#module-beamsolve.FEM.fem_model" title="Link to this heading"></a></h3>
+<p>Finite element model for an Euler-Bernoulli beam.</p>
+<p>&#64;author: Vincent Mahé</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="beamsolve.FEM.fem_model.FEMModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">beamsolve.FEM.fem_model.</span></span><span class="sig-name descname"><span class="pre">FEMModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ne</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">20</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/fem_model.html#FEMModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.fem_model.FEMModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Finite element model of an Euler-Bernoulli beam.</p>
+<p>The beam is discretised into <code class="docutils literal notranslate"><span class="pre">ne</span></code> elements of equal length.
+Each node has two degrees of freedom: transverse displacement <span class="math notranslate nohighlight">\(v\)</span> and rotation <span class="math notranslate nohighlight">\(\theta\)</span>. The global stiffness matrix <span class="math notranslate nohighlight">\(\mathrm{K}\)</span> and mass matrix <span class="math notranslate nohighlight">\(\mathrm{M}\)</span> are assembled using the standard Hermite shape functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam</strong> (<a class="reference internal" href="#beamsolve.beam.beam.Beam" title="beamsolve.beam.beam.Beam"><em>Beam</em></a>) – The beam to model.</p></li>
+<li><p><strong>ne</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Number of finite elements.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">Beam</span><span class="p">,</span> <span class="n">rectangular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.FEM</span><span class="w"> </span><span class="kn">import</span> <span class="n">FEMModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">rectangular_section</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span> <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">210e9</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">7800</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
+<span class="gp">... </span>            <span class="n">bc_left</span><span class="o">=</span><span class="s2">&quot;clamped&quot;</span><span class="p">,</span> <span class="n">bc_right</span><span class="o">=</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">model</span> <span class="o">=</span> <span class="n">FEMModel</span><span class="p">(</span><span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span> <span class="n">ne</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.FEM.fem_model.FEMModel.assemble_global_matrix">
+<span class="sig-name descname"><span class="pre">assemble_global_matrix</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Me</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/fem_model.html#FEMModel.assemble_global_matrix"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.fem_model.FEMModel.assemble_global_matrix" title="Link to this definition"></a></dt>
+<dd><p>Assemble the global finite element (mass or stiffness) matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>Me</strong> (<em>np.ndarray</em>) – The elementary matrix to be assembled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.FEM.fem_model.FEMModel.get_constrained_dofs">
+<span class="sig-name descname"><span class="pre">get_constrained_dofs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/fem_model.html#FEMModel.get_constrained_dofs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.fem_model.FEMModel.get_constrained_dofs" title="Link to this definition"></a></dt>
+<dd><p>Return the list of constrained degrees of freedom based on the beam
+boundary conditions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>constrained</strong> – Indices of the constrained DOFs.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)">list</a> of <a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)">int</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.FEM.fem_model.FEMModel.get_free_dofs">
+<span class="sig-name descname"><span class="pre">get_free_dofs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/fem_model.html#FEMModel.get_free_dofs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.fem_model.FEMModel.get_free_dofs" title="Link to this definition"></a></dt>
+<dd><p>Get the unconstrained dof</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.FEM.fem_model.FEMModel.reduced_matrices">
+<span class="sig-name descname"><span class="pre">reduced_matrices</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/fem_model.html#FEMModel.reduced_matrices"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.fem_model.FEMModel.reduced_matrices" title="Link to this definition"></a></dt>
+<dd><p>Build the reduced stiffness and mass matrices from the global ones and the constraints.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.FEM.fem_model.FEMModel.solve_modes">
+<span class="sig-name descname"><span class="pre">solve_modes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_modes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/fem_model.html#FEMModel.solve_modes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.fem_model.FEMModel.solve_modes" title="Link to this definition"></a></dt>
+<dd><p>Solve the generalised eigenvalue problem and return the modal solution.</p>
+<p>The following problem is solved on the reduced (free DOF) matrices:</p>
+<div class="math notranslate nohighlight">
+\[\mathrm{K} \, \boldsymbol{\phi} =
+\omega^2 \, \mathrm{M} \, \boldsymbol{\phi}.\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>n_modes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – Number of modes to compute. Default is 5.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>sol</strong> – The modal solution.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#beamsolve.FEM.solver.FEMSolution" title="beamsolve.FEM.solver.FEMSolution">FEMSolution</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">Beam</span><span class="p">,</span> <span class="n">rectangular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.FEM</span><span class="w"> </span><span class="kn">import</span> <span class="n">FEMModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">rectangular_section</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span>  <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">210e9</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">7800</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">bc_left</span><span class="o">=</span><span class="s2">&quot;clamped&quot;</span><span class="p">,</span> <span class="n">bc_right</span><span class="o">=</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fem_model</span> <span class="o">=</span> <span class="n">FEMModel</span><span class="p">(</span><span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span> <span class="n">ne</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sol_fem</span>   <span class="o">=</span> <span class="n">fem_model</span><span class="o">.</span><span class="n">solve_modes</span><span class="p">(</span><span class="n">n_modes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-beamsolve.FEM.solver">
+<span id="solver"></span><h3>solver<a class="headerlink" href="#module-beamsolve.FEM.solver" title="Link to this heading"></a></h3>
+<p>FEM modal solution container and normalisation utility.</p>
+<p>&#64;author: Vincent Mahé</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="beamsolve.FEM.solver.FEMSolution">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">beamsolve.FEM.solver.</span></span><span class="sig-name descname"><span class="pre">FEMSolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omegas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x_nodes</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/solver.html#FEMSolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.solver.FEMSolution" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Modal solution of the beam FEM model.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequencies</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Natural frequencies [Hz], shape <code class="docutils literal notranslate"><span class="pre">(n_modes,)</span></code>, sorted in ascending
+order.</p></li>
+<li><p><strong>omegas</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Angular natural frequencies [rad/s], shape <code class="docutils literal notranslate"><span class="pre">(n_modes,)</span></code>.</p></li>
+<li><p><strong>Phi</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Normalised mode shapes, shape <code class="docutils literal notranslate"><span class="pre">(n_nodes,</span> <span class="pre">n_modes)</span></code>. Each column is
+a mode shape evaluated at the beam nodes. Normalisation: the
+component with the largest absolute value is 1, and the first
+non-negligible component is positive.</p></li>
+<li><p><strong>x_nodes</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Nodal positions along the beam [m], shape <code class="docutils literal notranslate"><span class="pre">(n_nodes,)</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-beamsolve.FEM.visualisation">
+<span id="visualisation"></span><h3>visualisation<a class="headerlink" href="#module-beamsolve.FEM.visualisation" title="Link to this heading"></a></h3>
+<p>Visualisation utilities for FEM modal solutions.</p>
+<p>&#64;author: Vincent Mahé</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="beamsolve.FEM.visualisation.plot_mode_shapes">
+<span class="sig-prename descclassname"><span class="pre">beamsolve.FEM.visualisation.</span></span><span class="sig-name descname"><span class="pre">plot_mode_shapes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/visualisation.html#plot_mode_shapes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.visualisation.plot_mode_shapes" title="Link to this definition"></a></dt>
+<dd><p>Plot the transverse mode shapes of the beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sol</strong> (<a class="reference internal" href="#beamsolve.FEM.solver.FEMSolution" title="beamsolve.FEM.solver.FEMSolution"><em>FEMSolution</em></a>) – The modal solution.</p></li>
+<li><p><strong>fig</strong> (<em>Figure</em>) – The figure where to plot the mode shapes.</p></li>
+<li><p><strong>modes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – Indices of the modes to plot (0-indexed). If None, all modes are
+plotted.</p></li>
+<li><p><strong>save_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) – If provided, the figure is saved at this path instead of displayed.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">Beam</span><span class="p">,</span> <span class="n">rectangular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.FEM</span><span class="w"> </span><span class="kn">import</span> <span class="n">FEMModel</span><span class="p">,</span> <span class="n">solve_modes</span><span class="p">,</span> <span class="n">visualisation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">rectangular_section</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span>  <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">210e9</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">7800</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">bc_left</span><span class="o">=</span><span class="s2">&quot;clamped&quot;</span><span class="p">,</span> <span class="n">bc_right</span><span class="o">=</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">fem_model</span> <span class="o">=</span> <span class="n">FEMModel</span><span class="p">(</span><span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span> <span class="n">ne</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sol_fem</span>   <span class="o">=</span> <span class="n">fem_model</span><span class="o">.</span><span class="n">solve_modes</span><span class="p">(</span><span class="n">n_modes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">visualisation</span><span class="o">.</span><span class="n">plot_mode_shapes</span><span class="p">(</span><span class="n">sol_fem</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+<section id="analytical-module">
+<h2>Analytical Module<a class="headerlink" href="#analytical-module" title="Link to this heading"></a></h2>
+<section id="module-beamsolve.Analytical.analytical_model">
+<span id="analytical-model"></span><h3>analytical_model<a class="headerlink" href="#module-beamsolve.Analytical.analytical_model" title="Link to this heading"></a></h3>
+<p>Analytical modal analysis of the Euler-Bernoulli beam.</p>
+<p>&#64;author: [Author name]</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalModel">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">beamsolve.Analytical.analytical_model.</span></span><span class="sig-name descname"><span class="pre">AnalyticalModel</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beam</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n_modes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalModel"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalModel" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Analytical modal analysis of an Euler-Bernoulli beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>beam</strong> (<a class="reference internal" href="#beamsolve.beam.beam.Beam" title="beamsolve.beam.beam.Beam"><em>Beam</em></a>) – The beam to analyse.</p></li>
+<li><p><strong>n_modes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Number of modes to compute.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The natural frequencies and mode shapes are computed from the analytical
+solution of the Euler-Bernoulli beam equation</p>
+<div class="math notranslate nohighlight">
+\[EI \frac{\partial^4 V}{\partial x^4} - \rho A \omega^2 V = 0.\]</div>
+<p>The general solution for the mode shape <span class="math notranslate nohighlight">\(V(x)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[V(x) = C_1 \cos(\beta x) + C_2 \sin(\beta x)
+      + C_3 \cosh(\beta x) + C_4 \sinh(\beta x),\]</div>
+<p>where the wavenumber <span class="math notranslate nohighlight">\(\beta\)</span> is related to the angular frequency by</p>
+<div class="math notranslate nohighlight">
+\[\beta^4 = \frac{\rho A \omega^2}{EI}.\]</div>
+<p>The boundary conditions at both ends are gathered in a <span class="math notranslate nohighlight">\(4 \times 4\)</span>
+matrix <span class="math notranslate nohighlight">\(\mathrm{Z}(\beta)\)</span> such that <span class="math notranslate nohighlight">\(\mathrm{Z}(\beta)\,\mathbf{C} = \mathbf{0}\)</span>.
+Natural frequencies correspond to values of <span class="math notranslate nohighlight">\(\beta\)</span> for which
+<span class="math notranslate nohighlight">\(\det \mathrm{Z}(\beta) = 0\)</span>. The associated mode shape coefficients
+<span class="math notranslate nohighlight">\(\mathbf{C}\)</span> are obtained as the null vector of <span class="math notranslate nohighlight">\(\mathrm{Z}(\beta)\)</span> via SVD.</p>
+<p>The rows of <span class="math notranslate nohighlight">\(\mathrm{Z}(\beta)\)</span> encode the following conditions:</p>
+<ul class="simple">
+<li><p><strong>Clamped</strong> end: <span class="math notranslate nohighlight">\(V = 0\)</span> and <span class="math notranslate nohighlight">\(V' = 0\)</span></p></li>
+<li><p><strong>Pinned</strong> end: <span class="math notranslate nohighlight">\(V = 0\)</span> and <span class="math notranslate nohighlight">\(V'' = 0\)</span></p></li>
+<li><p><strong>Free</strong> end: <span class="math notranslate nohighlight">\(V'' = 0\)</span> and <span class="math notranslate nohighlight">\(V''' = 0\)</span></p></li>
+</ul>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">Beam</span><span class="p">,</span> <span class="n">rectangular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.Analytical</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnalyticalModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">rectangular_section</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span>  <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">210e9</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">7800</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">bc_left</span><span class="o">=</span><span class="s2">&quot;clamped&quot;</span><span class="p">,</span> <span class="n">bc_right</span><span class="o">=</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analytical_model</span> <span class="o">=</span> <span class="n">AnalyticalModel</span><span class="p">(</span><span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span> <span class="n">n_modes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sol</span>   <span class="o">=</span> <span class="n">analytical_model</span><span class="o">.</span><span class="n">solve_modes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sol</span><span class="o">.</span><span class="n">frequencies</span>
+<span class="go">array([...])</span>
+</pre></div>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalModel.bc_rows">
+<span class="sig-name descname"><span class="pre">bc_rows</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalModel.bc_rows"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.bc_rows" title="Link to this definition"></a></dt>
+<dd><p>Return the two rows of <span class="math notranslate nohighlight">\(\mathrm{Z}(\beta)\)</span> corresponding to boundary
+condition <code class="docutils literal notranslate"><span class="pre">bc</span></code> applied at position <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>bc</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Boundary condition type (<code class="docutils literal notranslate"><span class="pre">&quot;clamped&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;pinned&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;free&quot;</span></code>).</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Position [m] where the BC is applied.</p></li>
+<li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Wavenumber [1/m].</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The mode shape <span class="math notranslate nohighlight">\(V(x) = C_1\cos(\beta x) + C_2\sin(\beta x) + C_3\cosh(\beta x) + C_4\sinh(\beta x)\)</span>
+and its derivatives evaluated at <code class="docutils literal notranslate"><span class="pre">x</span></code> give the following rows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}V    &amp;: [\cos(\beta x),\ \sin(\beta x),\ \cosh(\beta x),\ \sinh(\beta x)] \\
+V'   &amp;: \beta\,[-\sin(\beta x),\ \cos(\beta x),\ \sinh(\beta x),\ \cosh(\beta x)] \\
+V''  &amp;: \beta^2\,[-\cos(\beta x),\ -\sin(\beta x),\ \cosh(\beta x),\ \sinh(\beta x)] \\
+V''' &amp;: \beta^3\,[\sin(\beta x),\ -\cos(\beta x),\ \sinh(\beta x),\ \cosh(\beta x)]\end{split}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>rows</strong> – Two rows of the BC matrix.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)">numpy.ndarray</a>, shape (2, 4)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalModel.build_Z">
+<span class="sig-name descname"><span class="pre">build_Z</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalModel.build_Z"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.build_Z" title="Link to this definition"></a></dt>
+<dd><p>Assemble the <span class="math notranslate nohighlight">\(4 \times 4\)</span> boundary condition matrix
+<span class="math notranslate nohighlight">\(\mathrm{Z}(\beta)\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Wavenumber [1/m].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Z</strong></p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)">numpy.ndarray</a>, shape (4, 4)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalModel.characteristic_equation">
+<span class="sig-name descname"><span class="pre">characteristic_equation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalModel.characteristic_equation"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.characteristic_equation" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the characteristic equation <span class="math notranslate nohighlight">\(\det \mathrm{Z}(\beta)\)</span>.</p>
+<p>To avoid numerical overflow from the hyperbolic functions at large
+<span class="math notranslate nohighlight">\(\beta L\)</span>, the determinant is normalised by the Frobenius norm
+of <span class="math notranslate nohighlight">\(\mathrm{Z}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f(\beta) = \frac{\det \mathrm{Z}(\beta)}{\| \mathrm{Z}(\beta) \|_F^4}\]</div>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Wavenumber [1/m].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Value of the normalised characteristic equation.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)">float</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalModel.find_betas">
+<span class="sig-name descname"><span class="pre">find_betas</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalModel.find_betas"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.find_betas" title="Link to this definition"></a></dt>
+<dd><p>Find the first <code class="docutils literal notranslate"><span class="pre">n_modes</span></code> roots of <span class="math notranslate nohighlight">\(\det \mathrm{Z}(\beta) = 0\)</span> by
+scanning for sign changes and refining with Brent’s method.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>betas</strong> – Array of wavenumbers <span class="math notranslate nohighlight">\(\beta\)</span> [1/m], shape <code class="docutils literal notranslate"><span class="pre">(n_modes,)</span></code>.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)">numpy.ndarray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalModel.mode_coefficients">
+<span class="sig-name descname"><span class="pre">mode_coefficients</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalModel.mode_coefficients"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.mode_coefficients" title="Link to this definition"></a></dt>
+<dd><p>Compute the mode shape coefficients <span class="math notranslate nohighlight">\(\mathbf{C} = [C_1, C_2, C_3, C_4]\)</span>
+for a given wavenumber via SVD of <span class="math notranslate nohighlight">\(\mathrm{Z}(\beta)\)</span>.</p>
+<p>At a root <span class="math notranslate nohighlight">\(\beta_i\)</span>, <span class="math notranslate nohighlight">\(\mathrm{Z}(\beta_i)\)</span> has rank 3 and its
+smallest singular value is (numerically) zero. The associated right
+singular vector — the last row of <span class="math notranslate nohighlight">\(\mathrm{V}^T\)</span> in the decomposition
+<span class="math notranslate nohighlight">\(\mathrm{Z} = \mathrm{U} \mathrm{\Sigma} \mathrm{V}^T\)</span> — spans the null space and gives
+<span class="math notranslate nohighlight">\(\mathbf{C}\)</span>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Wavenumber [1/m].</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>C</strong> – Mode shape coefficients <span class="math notranslate nohighlight">\([C_1, C_2, C_3, C_4]\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)">numpy.ndarray</a>, shape (4,)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalModel.normalise">
+<span class="sig-name descname"><span class="pre">normalise</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">phi</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalModel.normalise"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.normalise" title="Link to this definition"></a></dt>
+<dd><p>Normalise a mode shape vector.</p>
+<p>The component with the largest absolute value is set to 1. If the
+first non-negligible component is negative, the vector is flipped.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>phi</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Raw mode shape values.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>phi_norm</strong> – Normalised mode shape.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)">numpy.ndarray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalModel.phi">
+<span class="sig-name descname"><span class="pre">phi</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">beta</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalModel.phi"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.phi" title="Link to this definition"></a></dt>
+<dd><p>Evaluate the mode shape at positions <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Positions along the beam [m].</p></li>
+<li><p><strong>beta</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Wavenumber [1/m].</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>phi</strong> – Mode shape values at positions <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)">numpy.ndarray</a></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalModel.solve_modes">
+<span class="sig-name descname"><span class="pre">solve_modes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalModel.solve_modes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalModel.solve_modes" title="Link to this definition"></a></dt>
+<dd><p>Compute natural frequencies and mode shapes and return the analytical
+solution.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a><em>, </em><em>optional</em>) – Spatial grid [m] on which the mode shapes are evaluated, shape
+<code class="docutils literal notranslate"><span class="pre">(n_points,)</span></code>. Defaults to <code class="docutils literal notranslate"><span class="pre">numpy.linspace(0,</span> <span class="pre">L,</span> <span class="pre">300)</span></code>.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>sol</strong> – The analytical modal solution.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p><a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalSolution" title="beamsolve.Analytical.analytical_model.AnalyticalSolution">AnalyticalSolution</a></p>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">Beam</span><span class="p">,</span> <span class="n">rectangular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.Analytical</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnalyticalModel</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">rectangular_section</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span>  <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">210e9</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">7800</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">bc_left</span><span class="o">=</span><span class="s2">&quot;clamped&quot;</span><span class="p">,</span> <span class="n">bc_right</span><span class="o">=</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analytical_model</span> <span class="o">=</span> <span class="n">AnalyticalModel</span><span class="p">(</span><span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span> <span class="n">n_modes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sol</span>   <span class="o">=</span> <span class="n">analytical_model</span><span class="o">.</span><span class="n">solve_modes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sol</span><span class="o">.</span><span class="n">Phi</span><span class="o">.</span><span class="n">shape</span>
+<span class="go">(300, 3)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="beamsolve.Analytical.analytical_model.AnalyticalSolution">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">beamsolve.Analytical.analytical_model.</span></span><span class="sig-name descname"><span class="pre">AnalyticalSolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">frequencies</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omegas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">betas</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Phi</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">x</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/analytical_model.html#AnalyticalSolution"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.analytical_model.AnalyticalSolution" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Analytical modal solution of the beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>frequencies</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Natural frequencies [Hz], shape <code class="docutils literal notranslate"><span class="pre">(n_modes,)</span></code>, sorted in ascending
+order.</p></li>
+<li><p><strong>omegas</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Angular natural frequencies [rad/s], shape <code class="docutils literal notranslate"><span class="pre">(n_modes,)</span></code>.</p></li>
+<li><p><strong>betas</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Wavenumbers <span class="math notranslate nohighlight">\(\beta\)</span> [1/m], shape <code class="docutils literal notranslate"><span class="pre">(n_modes,)</span></code>.</p></li>
+<li><p><strong>Phi</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Normalised mode shapes, shape <code class="docutils literal notranslate"><span class="pre">(n_points,</span> <span class="pre">n_modes)</span></code>. Each column is
+a mode shape evaluated on the spatial grid <code class="docutils literal notranslate"><span class="pre">x</span></code>. Normalisation: the
+component with the largest absolute value is 1, and the first
+non-negligible component is positive.</p></li>
+<li><p><strong>x</strong> (<a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.ndarray.html#numpy.ndarray" title="(in NumPy v2.4)"><em>numpy.ndarray</em></a>) – Spatial grid [m], shape <code class="docutils literal notranslate"><span class="pre">(n_points,)</span></code>.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="id1">
+<h3>visualisation<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p id="module-beamsolve.Analytical.visualisation">Visualisation utilities for analytical modal solutions.</p>
+<p>&#64;author: [Author name]</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="beamsolve.Analytical.visualisation.plot_mode_shapes">
+<span class="sig-prename descclassname"><span class="pre">beamsolve.Analytical.visualisation.</span></span><span class="sig-name descname"><span class="pre">plot_mode_shapes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sol</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fig</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">modes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">save_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/Analytical/visualisation.html#plot_mode_shapes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.Analytical.visualisation.plot_mode_shapes" title="Link to this definition"></a></dt>
+<dd><p>Plot the analytical transverse mode shapes of the beam.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sol</strong> (<a class="reference internal" href="#beamsolve.Analytical.analytical_model.AnalyticalSolution" title="beamsolve.Analytical.analytical_model.AnalyticalSolution"><em>AnalyticalSolution</em></a>) – The analytical modal solution.</p></li>
+<li><p><strong>fig</strong> (<em>Figure</em><em>, </em><em>optional</em>) – Figure on which to overlay the mode shapes. If None, a new figure
+is created.</p></li>
+<li><p><strong>modes</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><em>list</em></a><em> of </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em>, </em><em>optional</em>) – Indices of the modes to plot (0-indexed). If None, all modes are
+plotted.</p></li>
+<li><p><strong>save_path</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a><em>, </em><em>optional</em>) – If provided, the figure is saved at this path instead of displayed.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.beam</span><span class="w"> </span><span class="kn">import</span> <span class="n">Beam</span><span class="p">,</span> <span class="n">rectangular_section</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span><span class="w"> </span><span class="nn">beamsolve.Analytical</span><span class="w"> </span><span class="kn">import</span> <span class="n">AnalyticalModel</span><span class="p">,</span> <span class="n">visualisation</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">A</span><span class="p">,</span> <span class="n">I</span> <span class="o">=</span> <span class="n">rectangular_section</span><span class="p">(</span><span class="n">b</span><span class="o">=</span><span class="mf">0.02</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.005</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">beam</span>  <span class="o">=</span> <span class="n">Beam</span><span class="p">(</span><span class="n">L</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">E</span><span class="o">=</span><span class="mf">210e9</span><span class="p">,</span> <span class="n">rho</span><span class="o">=</span><span class="mi">7800</span><span class="p">,</span> <span class="n">A</span><span class="o">=</span><span class="n">A</span><span class="p">,</span> <span class="n">I</span><span class="o">=</span><span class="n">I</span><span class="p">,</span>
+<span class="gp">... </span>             <span class="n">bc_left</span><span class="o">=</span><span class="s2">&quot;clamped&quot;</span><span class="p">,</span> <span class="n">bc_right</span><span class="o">=</span><span class="s2">&quot;free&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">analytical_model</span> <span class="o">=</span> <span class="n">AnalyticalModel</span><span class="p">(</span><span class="n">beam</span><span class="o">=</span><span class="n">beam</span><span class="p">,</span> <span class="n">n_modes</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sol_analytical</span>   <span class="o">=</span> <span class="n">analytical_model</span><span class="o">.</span><span class="n">solve_modes</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">visualisation</span><span class="o">.</span><span class="n">plot_mode_shapes</span><span class="p">(</span><span class="n">sol_analytical</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="architecture.html" class="btn btn-neutral float-left" title="Package architecture" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation guide" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, Your Name.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
