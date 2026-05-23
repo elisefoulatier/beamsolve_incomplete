@@ -304,6 +304,63 @@
             <span class="n">Phi</span>         <span class="o">=</span> <span class="n">Phi</span><span class="p">,</span>
             <span class="n">x_nodes</span>     <span class="o">=</span> <span class="n">x_nodes</span><span class="p">,</span>
         <span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="FEMModel.element_stiffness">
+<a class="viewcode-back" href="../../../modules.html#beamsolve.FEM.fem_model.FEMModel.element_stiffness">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">element_stiffness</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute elementary stiffness matrix.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self :</span>
+<span class="sd">            Description of the problem</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Ke : ndarray</span>
+<span class="sd">            The elementary stiffness matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">E</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beam</span><span class="o">.</span><span class="n">E</span>
+        <span class="n">I</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beam</span><span class="o">.</span><span class="n">I</span>
+        <span class="n">Le</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Le</span>
+
+        <span class="c1"># Build elementary 4 x 4 matrix</span>
+        <span class="n">Ke</span> <span class="o">=</span> <span class="n">E</span><span class="o">*</span><span class="n">I</span><span class="o">/</span><span class="n">Le</span><span class="o">^</span><span class="mi">3</span><span class="o">*</span><span class="p">[[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="n">Le</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">Le</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">Le</span><span class="o">^</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">Le</span><span class="p">],</span> <span class="p">[</span><span class="mi">6</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">Le</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">Le</span><span class="o">^</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="n">Ke</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="n">Ke</span><span class="p">)</span>
+
+
+        <span class="k">return</span> <span class="n">Ke</span></div>
+
+    
+<div class="viewcode-block" id="FEMModel.element_mass">
+<a class="viewcode-back" href="../../../modules.html#beamsolve.FEM.fem_model.FEMModel.element_mass">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">element_mass</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="p">:</span>
+<span class="w">        </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Compute elementary mass matrix.</span>
+
+<span class="sd">        Parameters</span>
+<span class="sd">        ----------</span>
+<span class="sd">        self :</span>
+<span class="sd">            Description of the problem</span>
+
+<span class="sd">        Returns</span>
+<span class="sd">        -------</span>
+<span class="sd">        Me : ndarray</span>
+<span class="sd">            The elementary mass matrix.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beam</span><span class="o">.</span><span class="n">A</span>
+        <span class="n">rho</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">beam</span><span class="o">.</span><span class="n">rho</span>
+        <span class="n">Le</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">Le</span>
+
+        <span class="c1"># Build elementary 4 x 4 matrix</span>
+        <span class="n">Me</span> <span class="o">=</span> <span class="n">rho</span><span class="o">*</span><span class="n">A</span><span class="o">*</span><span class="n">Le</span><span class="o">/</span><span class="mi">420</span><span class="o">*</span><span class="p">[[</span><span class="mi">156</span><span class="p">,</span> <span class="mi">22</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="o">-</span><span class="mi">13</span><span class="o">*</span><span class="n">Le</span><span class="p">],</span> <span class="p">[</span><span class="mi">22</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">Le</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="mi">13</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">Le</span><span class="o">^</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">54</span><span class="p">,</span> <span class="mi">13</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="mi">156</span><span class="p">,</span> <span class="o">-</span><span class="mi">22</span><span class="o">*</span><span class="n">Le</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">13</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">Le</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">22</span><span class="o">*</span><span class="n">Le</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">Le</span><span class="o">^</span><span class="mi">2</span><span class="p">]]</span>
+        <span class="n">Me</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">(</span><span class="n">Me</span><span class="p">)</span>
+
+
+        <span class="k">return</span> <span class="n">Me</span></div>
 </div>
 
 </pre></div>

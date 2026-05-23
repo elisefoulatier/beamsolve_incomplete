@@ -63,6 +63,8 @@
 <li class="toctree-l3"><a class="reference internal" href="#module-beamsolve.FEM.fem_model">fem_model</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel"><code class="docutils literal notranslate"><span class="pre">FEMModel</span></code></a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.assemble_global_matrix"><code class="docutils literal notranslate"><span class="pre">FEMModel.assemble_global_matrix()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.element_mass"><code class="docutils literal notranslate"><span class="pre">FEMModel.element_mass()</span></code></a></li>
+<li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.element_stiffness"><code class="docutils literal notranslate"><span class="pre">FEMModel.element_stiffness()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.get_constrained_dofs"><code class="docutils literal notranslate"><span class="pre">FEMModel.get_constrained_dofs()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.get_free_dofs"><code class="docutils literal notranslate"><span class="pre">FEMModel.get_free_dofs()</span></code></a></li>
 <li class="toctree-l5"><a class="reference internal" href="#beamsolve.FEM.fem_model.FEMModel.reduced_matrices"><code class="docutils literal notranslate"><span class="pre">FEMModel.reduced_matrices()</span></code></a></li>
@@ -270,6 +272,40 @@ Each node has two degrees of freedom: transverse displacement <span class="math 
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><p><strong>Me</strong> (<em>np.ndarray</em>) – The elementary matrix to be assembled.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.FEM.fem_model.FEMModel.element_mass">
+<span class="sig-name descname"><span class="pre">element_mass</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/fem_model.html#FEMModel.element_mass"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.fem_model.FEMModel.element_mass" title="Link to this definition"></a></dt>
+<dd><p>Compute elementary mass matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> – Description of the problem</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Me</strong> – The elementary mass matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="beamsolve.FEM.fem_model.FEMModel.element_stiffness">
+<span class="sig-name descname"><span class="pre">element_stiffness</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/beamsolve/FEM/fem_model.html#FEMModel.element_stiffness"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#beamsolve.FEM.fem_model.FEMModel.element_stiffness" title="Link to this definition"></a></dt>
+<dd><p>Compute elementary stiffness matrix.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>self</strong> – Description of the problem</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>Ke</strong> – The elementary stiffness matrix.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>ndarray</p>
 </dd>
 </dl>
 </dd></dl>
