@@ -1,0 +1,35 @@
+[build-system]
+requires = [
+    "setuptools>=61.0.0",
+    "wheel",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "beamsolve"
+version = "1.0.0"
+description = "A Python package for modal analysis of Euler-Bernoulli beams using the Finite Element Method and analytical solutions"
+readme = "README.rst"
+authors = [
+    { name = "Vincent Mahé", email = "vincent.mahe@ec-nantes.fr" },
+]
+license = "Apache-2.0"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "numpy>=1.24",
+    "matplotlib>=3.7",
+    "scipy>=1.10",
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Homepage = "https://github.com/Vince_ECN/beamsolve"
+Repository = "https://github.com/Vince_ECN/beamsolve"
+Documentation = "https://Vince_ECN.github.io/beamsolve/"

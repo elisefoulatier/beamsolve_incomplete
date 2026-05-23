@@ -1,0 +1,43 @@
+digraph "classes_beamsolve" {
+rankdir=BT;
+splines="curved";
+nodesep=0.5;
+ranksep=0.75;
+charset="utf-8";
+fontname="Courier New";
+node [fontname="Courier New"];
+edge [fontname="Courier New", color="gray", fontcolor="gray", fontsize=10];
+"beamsolve.Analytical.analytical_model.AnalyticalModel" [color="black", fontcolor="black", label=<{AnalyticalModel|beam<br ALIGN="LEFT"/>n_modes : int<br ALIGN="LEFT"/>|bc_rows(bc: str, x: float, beta: float): np.ndarray<br ALIGN="LEFT"/>build_Z(beta: float): np.ndarray<br ALIGN="LEFT"/>characteristic_equation(beta: float): float<br ALIGN="LEFT"/>find_betas(): np.ndarray<br ALIGN="LEFT"/>mode_coefficients(beta: float): np.ndarray<br ALIGN="LEFT"/>normalise(phi: np.ndarray): np.ndarray<br ALIGN="LEFT"/>phi(x: np.ndarray, beta: float): np.ndarray<br ALIGN="LEFT"/>solve_modes(x: np.ndarray): AnalyticalSolution<br ALIGN="LEFT"/>}>, shape="record", style="filled", fillcolor="lightblue"];
+"beamsolve.Analytical.analytical_model.AnalyticalSolution" [color="black", fontcolor="black", label=<{AnalyticalSolution|Phi : str<br ALIGN="LEFT"/>betas : str<br ALIGN="LEFT"/>frequencies : str<br ALIGN="LEFT"/>omegas : str<br ALIGN="LEFT"/>x : str<br ALIGN="LEFT"/>|}>, shape="record", style="filled", fillcolor="lightgreen"];
+"beamsolve.beam.beam.Beam" [color="black", fontcolor="black", label=<{Beam|A : float<br ALIGN="LEFT"/>E : float<br ALIGN="LEFT"/>I : float<br ALIGN="LEFT"/>L : float<br ALIGN="LEFT"/>bc_left : str<br ALIGN="LEFT"/>bc_right : str<br ALIGN="LEFT"/>rho : float<br ALIGN="LEFT"/>|}>, shape="record", style="filled", fillcolor="lightblue"];
+"beamsolve.FEM.fem_model.FEMModel" [color="black", fontcolor="black", label=<{FEMModel|K : str<br ALIGN="LEFT"/>Ke<br ALIGN="LEFT"/>Le : float<br ALIGN="LEFT"/>M : str<br ALIGN="LEFT"/>Me<br ALIGN="LEFT"/>beam<br ALIGN="LEFT"/>n_dof : int<br ALIGN="LEFT"/>n_nodes : int<br ALIGN="LEFT"/>ne : int<br ALIGN="LEFT"/>|assemble_global_matrix(Me): np.ndarray<br ALIGN="LEFT"/>element_mass(): np.ndarray<br ALIGN="LEFT"/>element_stiffness(): np.ndarray<br ALIGN="LEFT"/>get_constrained_dofs(): list<br ALIGN="LEFT"/>get_free_dofs()<br ALIGN="LEFT"/>reduced_matrices()<br ALIGN="LEFT"/>solve_modes(n_modes: int)<br ALIGN="LEFT"/>}>, shape="record", style="filled", fillcolor="lightblue"];
+"beamsolve.FEM.solver.FEMSolution" [color="black", fontcolor="black", label=<{FEMSolution|Phi : str<br ALIGN="LEFT"/>frequencies : str<br ALIGN="LEFT"/>omegas : str<br ALIGN="LEFT"/>x_nodes : str<br ALIGN="LEFT"/>|}>, shape="record", style="filled", fillcolor="lightgreen"];
+"beamsolve.beam.beam.Beam" -> "beamsolve.Analytical.analytical_model.AnalyticalModel" [arrowhead="normal", arrowtail="none", xlabel="beam"];
+"beamsolve.beam.beam.Beam" -> "beamsolve.FEM.fem_model.FEMModel" [arrowhead="normal", arrowtail="none", xlabel="beam"];
+  subgraph cluster_beam {
+    label="Beam";
+    labelloc="b";
+    style="dashed";
+    color="gray";
+    "beamsolve.beam.beam.Beam"
+  }
+
+  subgraph cluster_fem {
+    label="FEM";
+    labelloc="b";
+    style="dashed";
+    color="gray";
+    "beamsolve.FEM.fem_model.FEMModel"
+    "beamsolve.FEM.solver.FEMSolution"
+  }
+
+  subgraph cluster_analytical {
+    label="Analytical";
+    labelloc="b";
+    style="dashed";
+    color="gray";
+    "beamsolve.Analytical.analytical_model.AnalyticalModel"
+    "beamsolve.Analytical.analytical_model.AnalyticalSolution"
+  }
+
+}

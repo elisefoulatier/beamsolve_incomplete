@@ -1,0 +1,23 @@
+digraph "packages_beamsolve" {
+rankdir=BT
+charset="utf-8"
+"beamsolve" [color="black", label=<beamsolve>, shape="box", style="solid"];
+"beamsolve.Analytical" [color="black", label=<beamsolve.Analytical>, shape="box", style="solid"];
+"beamsolve.Analytical.analytical_model" [color="black", label=<beamsolve.Analytical.analytical_model>, shape="box", style="solid"];
+"beamsolve.Analytical.visualisation" [color="black", label=<beamsolve.Analytical.visualisation>, shape="box", style="solid"];
+"beamsolve.FEM" [color="black", label=<beamsolve.FEM>, shape="box", style="solid"];
+"beamsolve.FEM.fem_model" [color="black", label=<beamsolve.FEM.fem_model>, shape="box", style="solid"];
+"beamsolve.FEM.solver" [color="black", label=<beamsolve.FEM.solver>, shape="box", style="solid"];
+"beamsolve.FEM.visualisation" [color="black", label=<beamsolve.FEM.visualisation>, shape="box", style="solid"];
+"beamsolve.__version__" [color="black", label=<beamsolve.__version__>, shape="box", style="solid"];
+"beamsolve.beam" [color="black", label=<beamsolve.beam>, shape="box", style="solid"];
+"beamsolve.beam.beam" [color="black", label=<beamsolve.beam.beam>, shape="box", style="solid"];
+"beamsolve" -> "beamsolve.__version__" [arrowhead="open", arrowtail="none"];
+"beamsolve.Analytical" -> "beamsolve.Analytical.analytical_model" [arrowhead="open", arrowtail="none"];
+"beamsolve.Analytical.visualisation" -> "beamsolve.Analytical.analytical_model" [arrowhead="open", arrowtail="none"];
+"beamsolve.FEM" -> "beamsolve.FEM.fem_model" [arrowhead="open", arrowtail="none"];
+"beamsolve.FEM" -> "beamsolve.FEM.solver" [arrowhead="open", arrowtail="none"];
+"beamsolve.FEM.fem_model" -> "beamsolve.FEM.solver" [arrowhead="open", arrowtail="none"];
+"beamsolve.FEM.visualisation" -> "beamsolve.FEM.solver" [arrowhead="open", arrowtail="none"];
+"beamsolve.beam" -> "beamsolve.beam.beam" [arrowhead="open", arrowtail="none"];
+}
