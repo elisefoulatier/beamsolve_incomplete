@@ -231,9 +231,7 @@ class FEMModel:
         Le = self.Le
 
         # Build elementary 4 x 4 matrix
-        Ke = E*I/Le^3*[[12, 6*Le, -12, 6*Le], [6*Le, 4*Le^2, -6*Le, 2*Le^2], [-12, -6*Le, 12, -6*Le], [6*Le, 2*Le^2, -6*Le, 4*Le^2]]
-        Ke = np.ndarray(Ke)
-
+        Ke = E*I/Le**3*np.array([[12, 6*Le, -12, 6*Le], [6*Le, 4*Le**2, -6*Le, 2*Le**2], [-12, -6*Le, 12, -6*Le], [6*Le, 2*Le**2, -6*Le, 4*Le**2]])
 
         return Ke
     
@@ -256,8 +254,6 @@ class FEMModel:
         Le = self.Le
 
         # Build elementary 4 x 4 matrix
-        Me = rho*A*Le/420*[[156, 22*Le, 54, -13*Le], [22*Le, 4*Le^2, 13*Le, -3*Le^2], [54, 13*Le, 156, -22*Le], [-13*Le, -3*Le^2, -22*Le, 4*Le^2]]
-        Me = np.ndarray(Me)
-
-
+        Me = rho*A*Le/420*np.array([[156, 22*Le, 54, -13*Le], [22*Le, 4*Le**2, 13*Le, -3*Le**2], [54, 13*Le, 156, -22*Le], [-13*Le, -3*Le**2, -22*Le, 4*Le**2]])
+        
         return Me
